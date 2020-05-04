@@ -1,0 +1,43 @@
+.container
+  display: grid
+  grid-template-columns: 4fr 10fr
+  height: 100%
+  background: aliceblue
+
+.contacts
+  background: yellowgreen
+  overflow: auto
+  padding: 20px
+  height: 100%
+  &__list
+    list-style: none
+    margin: 0
+    padding: 0
+
+.messages
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  overflow: auto
+  padding: 20px
+  height: 100%
+  &__list
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    list-style: none
+    margin: 0
+    padding: 0
+    width: 100%
+
+.form
+  display: flex
+  justify-content: space-between
+  padding-top: 20px
+  width: 100%
+  textarea
+    width: calc(100% - 50px)
+    height: 60px
+  button
+    width: 40px
+    height: 40px
