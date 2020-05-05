@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -23,18 +23,14 @@ const App = (props) => {
             <div className="wrapper">
                 <Route path="/profile" render={() => {
                     return <Profile
-                        profilePage={props.state.profilePage}
-                        dispatch={props.dispatch}
+                        store={props.store}
                     />
                 }} />
 
                 <Route path="/dialogs" render={() => {
-                    return (
-                        <Dialogs
-                            dialogsPage={props.state.dialogsPage}
-                            dispatch={props.dispatch}
-                        />
-                    );
+                    return <DialogsContainer
+                        store={props.store}
+                    />
                 }} />
 
                 <Route path="/news" component={News} />
