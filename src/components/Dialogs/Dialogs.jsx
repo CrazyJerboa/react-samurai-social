@@ -6,9 +6,9 @@ import Message from "./Message/Message";
 import styles from './Dialogs.module.sass';
 
 const Dialogs = (props) => {
-    const dialogsList = props.dialogs.map(user => <Dialog id={user.id} name={user.name} />);
+    const dialogsList = props.dialogsPage.dialogs.map(user => <Dialog id={user.id} key={user.id} name={user.name} />);
 
-    const messagesList = props.messages.map(message => <Message type="notyour" text={message.message} />);
+    const messagesList = props.dialogsPage.messages.map(message => <Message type="notyour" key={message.id} text={message.message} />);
 
     const addMessage = () => {
         props.addMessage();
@@ -35,7 +35,7 @@ const Dialogs = (props) => {
 
                 <div className={styles.form}>
                     <textarea
-                        value={props.newMessageText}
+                        value={props.dialogsPage.newMessageText}
                         onChange={onMessageChange}
                     />
                     <button onClick={addMessage}>></button>

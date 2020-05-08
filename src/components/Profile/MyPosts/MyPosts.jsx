@@ -5,7 +5,7 @@ import Post from "./Post/Post";
 import styles from './MyPosts.module.sass';
 
 const MyPosts = (props) => {
-    const postsList = props.postsData.map(post => <Post message={post.message} likes={post.likesCount}/>);
+    const postsList = props.profilePage.posts.map(post => <Post message={post.message} likes={post.likesCount}/>);
 
     const addPost = () => {
         props.addPost();
@@ -23,7 +23,7 @@ const MyPosts = (props) => {
 
             <div>
                 <textarea
-                    value={props.newPostText}
+                    value={props.profilePage.newPostText}
                     onChange={onPostChange}
                 />
 
