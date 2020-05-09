@@ -12,6 +12,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 import './App.sass';
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
     return (
@@ -24,6 +25,8 @@ const App = (props) => {
                 <Route path="/profile" render={() => <Profile /> } />
 
                 <Route path="/dialogs" render={() => <DialogsContainer /> } />
+
+                <Route path="/users" render={() => <UsersContainer /> } />
 
                 <Route path="/news" component={News} />
                 <Route path="/music" component={Music} />

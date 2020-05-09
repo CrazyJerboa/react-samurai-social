@@ -1,0 +1,17 @@
+.container
+  background: gray
+
+.pagination
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+
+.paginationPage
+  margin: 0 5px
+  cursor: pointer
+  &:hover
+    color: yellowgreen
+
+.paginationPageActive
+  composes: paginationPage
+  font-weight: 700

@@ -9,6 +9,7 @@ const Navbar = () => {
             <ul className={styles.list}>
                 <li><NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink></li>
                 <li><NavLink to="/dialogs" activeClassName={styles.active}>Dialogs</NavLink></li>
+                <li><NavLink to="/users" activeClassName={styles.active}>Users</NavLink></li>
                 <li><NavLink to="/news" activeClassName={styles.active}>News</NavLink></li>
                 <li><NavLink to="/music" activeClassName={styles.active}>Music</NavLink></li>
                 <li><NavLink to="/settings" activeClassName={styles.active}>Settings</NavLink></li>
