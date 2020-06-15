@@ -5,7 +5,11 @@ import Post from "./Post/Post";
 import styles from './MyPosts.module.sass';
 
 const MyPosts = (props) => {
-    const postsList = props.profilePage.posts.map(post => <Post message={post.message} likes={post.likesCount}/>);
+    const postsList = props.profilePage.posts.map((post, key) => <Post
+        key={key}
+        message={post.message}
+        likes={post.likesCount}
+    />);
 
     const addPost = () => {
         props.addPost();
