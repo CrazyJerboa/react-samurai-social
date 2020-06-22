@@ -11,7 +11,7 @@ import {setUserProfile} from "../../redux/profileReducer";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        const userId = this.props.match.params.userId ? this.props.match.params.userId : 2;
+        const userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.userId;
 
         axios
             .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
@@ -31,7 +31,8 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    userId: state.auth.userId
 });
 
 const WithURLDataContainerComponent = withRouter(ProfileContainer);

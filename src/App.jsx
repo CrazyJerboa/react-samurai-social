@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from "react-router-dom";
 
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
@@ -18,7 +18,7 @@ import './App.sass';
 const App = (props) => {
     return (
         <div className="outer">
-            <Header />
+            <HeaderContainer />
 
             <Navbar />
 
