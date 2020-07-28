@@ -4,12 +4,12 @@ import {NavLink} from "react-router-dom";
 import styles from './Users.module.sass';
 
 import defaultUserAvatar from '../../assets/img/user.png';
-import {followUser, unfollowUser} from "../../api/api";
 
 const Users = (props) => {
     const mapUsers = () => {
         return props.users.map(user =>
             <div key={user.id}>
+
             <span>
                 <NavLink to={'/profile/' + user.id}>
                     <img src={user.photos.small ? user.photos.small : defaultUserAvatar} alt=""/>
@@ -17,26 +17,8 @@ const Users = (props) => {
 
                 <div>
                     {user.followed
-                        ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            props.toggleIsFollowingProgress(true, user.id);
-                            unfollowUser(user.id).then(response => {
-                                if (response.resultCode === 0) {
-                                    props.unfollow(user.id);
-                                }
-                                props.toggleIsFollowingProgress(false, user.id);
-                            });
-
-                        }}>Unfollow</button>
-                        : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            props.toggleIsFollowingProgress(true, user.id);
-                            followUser(user.id).then(response => {
-                                if (response.resultCode === 0) {
-                                    props.follow(user.id);
-                                }
-                                props.toggleIsFollowingProgress(false, user.id);
-                            });
-
-                        }}>Follow</button>
+                        ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => props.unfollowUser(user.id)}>Unfollow</button>
+                        : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => props.followUser(user.id)}>Follow</button>
                     }
                 </div>
             </span>

@@ -1,3 +1,6 @@
+import {usersAPI} from "../api/api";
+import {follow, toggleIsFollowingProgress} from "./usersReducer";
+
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
@@ -58,5 +61,13 @@ export const setUserProfile = (profile) => ({
     type: SET_USER_PROFILE,
     profile
 });
+
+export const getUserData = (userId) => (dispatch) => {
+    dispatch(toggleIsFollowingProgress(true, userId));
+
+    usersAPI.getUserData(userId).then(response => {
+        dispatch(setUserProfile(response));
+    });
+}
 
 export default profileReducer;
