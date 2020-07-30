@@ -21,10 +21,6 @@ const Dialogs = (props) => {
         props.updateNewMessageText(text);
     }
 
-    if (!props.isAuth) {
-        return <Redirect to={'/login'}/>
-    }
-
     return (
         <div className={styles.container}>
             <div className={styles.contacts}>
