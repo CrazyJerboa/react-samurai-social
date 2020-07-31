@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from './UserInfo.module.sass';
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const UserInfo = (props) => {
 
@@ -22,9 +23,9 @@ const UserInfo = (props) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.banner}>
-                <img src="https://image.freepik.com/free-vector/abstract-blue-geometric-shapes-background_1035-17545.jpg" alt=""/>
-            </div>
+            {/*<div className={styles.banner}>*/}
+            {/*    <img src="https://image.freepik.com/free-vector/abstract-blue-geometric-shapes-background_1035-17545.jpg" alt=""/>*/}
+            {/*</div>*/}
 
             <div>
                 <img src={props.profile.photos.large} alt="" />
@@ -32,6 +33,7 @@ const UserInfo = (props) => {
 
             <h1>{props.profile.fullName}</h1>
             <p>{props.profile.aboutMe}</p>
+            <ProfileStatus status="Test status"/>
 
             <hr/>
             <h3>Contacts</h3>
