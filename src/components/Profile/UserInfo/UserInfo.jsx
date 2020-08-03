@@ -33,7 +33,10 @@ const UserInfo = (props) => {
 
             <h1>{props.profile.fullName}</h1>
             <p>{props.profile.aboutMe}</p>
-            <ProfileStatus status="Test status"/>
+            <ProfileStatus
+                status={props.status}
+                updateStatus={props.updateStatus}
+            />
 
             <hr/>
             <h3>Contacts</h3>
