@@ -2,7 +2,6 @@ import {profileAPI, usersAPI} from "../api/api";
 import {follow, toggleIsFollowingProgress} from "./usersReducer";
 
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
@@ -29,17 +28,10 @@ const profileReducer = (state = initialState, action) => {
                     ...state.posts,
                     {
                         id: 5,
-                        message: state.newPostText,
+                        message: action.text,
                         likesCount: 0
                     }
                 ]
-            };
-        }
-
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
             };
         }
 
@@ -61,10 +53,9 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = () => ({ type: ADD_POST });
-export const updateNewPostText = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
+export const addPost = (text) => ({
+    type: ADD_POST,
+    text
 });
 
 export const setUserProfile = (profile) => ({

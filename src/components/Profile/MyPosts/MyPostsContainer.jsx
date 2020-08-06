@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 
 import MyPosts from "./MyPosts";
 
-import {addPost, updateNewPostText} from "../../../redux/profileReducer";
+import {addPost} from "../../../redux/profileReducer";
 
 // параметры верхнего уровня передаются как пропсы при обычном прокидывании
 // типа <Component profilePage={state.profilePage} />
@@ -14,6 +14,6 @@ const mapStateToProps = (state) => {
 
 // параметры верхнего уровня передаются как методы при обычном прокидывании
 
-const MyPostsContainer = connect(mapStateToProps, {addPost, updateNewPostText})(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, {addPost})(MyPosts);
 
 export default MyPostsContainer;
