@@ -28,8 +28,9 @@ const LoginForm = props => {
                 name="remember"
                 component={Input}
                 type="checkbox"
-                validate={[required]}
             /> remember me</div>
+
+        {props.error && <div style={{color: '#ff6454'}}>{props.error}</div>}
 
         <button>Login</button>
     </form>
