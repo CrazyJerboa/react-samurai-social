@@ -15,7 +15,7 @@ const initialState = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: []
-}
+};
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -96,7 +96,7 @@ const usersReducer = (state = initialState, action) => {
 
         default: return state;
     }
-}
+};
 
 export const setUsers = (users) => ({
    type: SET_USERS,
@@ -132,6 +132,7 @@ export const toggleIsFollowingProgress = (isFetching, userId) => ({
 
 export const getUsers = (currentPage, pageSize) => (dispatch) => {
     dispatch(toggleIsFetching(true));
+    dispatch(setCurrentPage(currentPage));
 
     usersAPI.getUsers(currentPage, pageSize).then(response => {
         dispatch(toggleIsFetching(false));
@@ -139,7 +140,7 @@ export const getUsers = (currentPage, pageSize) => (dispatch) => {
         dispatch(setUsers(response.items));
         dispatch(setTotalUsersCount(response.totalCount));
     });
-}
+};
 
 export const followUser = (userId) => (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, userId));
@@ -151,7 +152,7 @@ export const followUser = (userId) => (dispatch) => {
 
         dispatch(toggleIsFollowingProgress(false, userId));
     });
-}
+};
 
 export const unfollowUser = (userId) => (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, userId));
@@ -163,6 +164,6 @@ export const unfollowUser = (userId) => (dispatch) => {
 
         dispatch(toggleIsFollowingProgress(false, userId));
     });
-}
+};
 
 export default usersReducer;
