@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from './UserInfo.module.sass';
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 const UserInfo = (props) => {
 
@@ -33,7 +33,7 @@ const UserInfo = (props) => {
 
             <h1>{props.profile.fullName}</h1>
             <p>{props.profile.aboutMe}</p>
-            <ProfileStatus
+            <ProfileStatusWithHooks
                 status={props.status}
                 updateStatus={props.updateStatus}
             />

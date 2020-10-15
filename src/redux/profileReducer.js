@@ -2,6 +2,7 @@ import {profileAPI, usersAPI} from "../api/api";
 import {follow, toggleIsFollowingProgress} from "./usersReducer";
 
 const ADD_POST = 'ADD_POST';
+const DELETE_POST = 'DELETE_POST';
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
@@ -32,6 +33,12 @@ const profileReducer = (state = initialState, action) => {
                         likesCount: 0
                     }
                 ]
+            };
+        }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.postId)
             };
         }
 
@@ -68,28 +75,30 @@ export const setStatus = (status) => ({
     status
 });
 
+export const deletePost = (postId) => ({
+    type: DELETE_POST,
+    postId
+});
+
 // thunks
 
-export const getUserData = (userId) => (dispatch) => {
+export const getUserData = (userId) => async (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, userId));
 
-    usersAPI.getUserData(userId).then(response => {
-        dispatch(setUserProfile(response));
-    });
-}
+    const response = await usersAPI.getUserData(userId);
+    dispatch(setUserProfile(response));
+};
 
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId).then(response => {
-        dispatch(setStatus(response));
-    });
-}
+export const getStatus = (userId) => async (dispatch) => {
+    const response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response));
+};
 
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode === 0) {
-            dispatch(setStatus(status));
-        }
-    });
-}
+export const updateStatus = (status) => async (dispatch) => {
+    const response = await profileAPI.updateStatus(status);
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
+};
 
 export default profileReducer;
