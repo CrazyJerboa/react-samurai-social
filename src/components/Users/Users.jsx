@@ -22,7 +22,7 @@ const Users = (props) => {
         <div className={styles.container}>
             <div className={styles.pagination}>
                 <Pagination
-                    totalUsersCount={props.totalUsersCount}
+                    totalItemsCount={props.totalUsersCount}
                     pageSize={props.pageSize}
                     currentPage={props.currentPage}
                     onPageChanged={props.onPageChanged}

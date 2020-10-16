@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
@@ -15,10 +15,11 @@ import Settings from "./components/Settings/Settings";
 
 import './App.sass';
 import Login from "./components/Login/Login";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import store from "./redux/redux-store";
 
 class App extends React.Component {
 
@@ -57,7 +58,24 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 });
 
-export default compose(
+// export default compose(
+//     withRouter,
+//     connect(mapStateToProps, {initializeApp})
+// )(App);
+
+const AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp})
 )(App);
+
+const SamuraiJSApp = props => {
+    return <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer />
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>;
+};
+
+export default SamuraiJSApp;
