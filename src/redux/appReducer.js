@@ -5,7 +5,8 @@ import {getAuthorisedUserData} from "./authReducer";
 const SET_INITIALIZED = 'SET_INITIALIZED';
 
 const initialState = {
-    initialized: false
+    initialized: false,
+    globalError: null
 };
 
 const appReducer = (state = initialState, action) => {
